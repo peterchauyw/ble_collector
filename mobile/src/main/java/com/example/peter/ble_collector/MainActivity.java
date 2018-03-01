@@ -41,7 +41,7 @@ public class MainActivity extends ListActivity {
     private Handler mHandler;
 
     private static final int REQUEST_ENABLE_BT = 1;
-    // Stops scanning after 10 seconds.
+    // Stops scanning after 10000 seconds.
     private static final long SCAN_PERIOD = 10000;
 
     @Override
@@ -235,7 +235,8 @@ public class MainActivity extends ListActivity {
                 public void onLeScan(final BluetoothDevice device, int rssi, byte[] scanRecord) {
                     Long tsLong = System.currentTimeMillis();
                     String ts = tsLong.toString();
-                    if (Objects.equals(device.getName(), new String("RBn"))) {
+//                    if (Objects.equals(device.getName(), new String("RBn"))) {
+                    if (Objects.equals(device.getAddress(), new String("30:52:CB:36:EF:44"))) {
                         writeToFile(Integer.toString(rssi) + "|" + ts + "\n");
                         runOnUiThread(new Runnable() {
                             @Override
